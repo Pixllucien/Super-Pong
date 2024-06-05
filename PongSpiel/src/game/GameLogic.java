@@ -74,7 +74,7 @@ public class GameLogic {
 	
 		if(beispielObjekt1.positionX == beispielObjekt2.positionX) {
 			keyHandler.invert = (-1); 
-			//was soll das? 
+			
 		}
 }
 }
