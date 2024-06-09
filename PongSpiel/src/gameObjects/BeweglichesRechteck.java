@@ -21,7 +21,7 @@ public class BeweglichesRechteck extends GameObject {
 		int invert = -1;
 		if(richtung == 0) {
 			positionX += 1 * invert;
-		} /*else if (richtung == 1) {
+		} else if (richtung == 1) {
 			positionY += 1;
 		} else if (richtung == 2) {
 			positionX -= 1;
@@ -37,6 +37,5 @@ public class BeweglichesRechteck extends GameObject {
 		} else {
 			schritteInGleicherRichtung += 1;
 		}
-		*/
 	}
 }
