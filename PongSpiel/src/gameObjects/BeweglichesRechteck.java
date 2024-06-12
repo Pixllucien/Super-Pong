@@ -1,14 +1,16 @@
 package gameObjects;
 
+import game.GameLogic;
 import game.GameObject;
 
 
 public class BeweglichesRechteck extends GameObject {
-	
-	public byte richtung;
+	GameLogic gamelogic;
+	public int richtung = 0;
 	public int schritteInGleicherRichtung;
+	public boolean moving = false;
 
-
+	
 	
 	public BeweglichesRechteck(int posX, int posY, int breite, int hoehe) {
 		super(posX, posY, breite, hoehe);
@@ -18,10 +20,10 @@ public class BeweglichesRechteck extends GameObject {
 	
 	public void automatischeKreisbewegung() 
 	{
-		int invert = -1;
+		
 		if(richtung == 0) {
-			positionX += 1 * invert;
-		} /*else if (richtung == 1) {
+			positionX += 1;
+		} else if (richtung == 1) {
 			positionY += 1;
 		} else if (richtung == 2) {
 			positionX -= 1;
@@ -37,6 +39,37 @@ public class BeweglichesRechteck extends GameObject {
 		} else {
 			schritteInGleicherRichtung += 1;
 		}
-		*/
+		
 	}
-}
+	
+	public void beispielbewegung() {
+	
+		if(moving == true) {
+			positionX-=1;
+		}
+	else if(richtung < 300 && moving == false) {
+			positionX +=1; 
+			richtung +=1;	
+			
+				
+			
+		}
+		
+	}
+	
+		
+		
+	}
+	
+	
+	
+	
+
+	
+	
+	
+			
+			
+		
+
+
