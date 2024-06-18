@@ -1,0 +1,230 @@
+package wuerfelspiel;
+
+import javax.swing.JOptionPane;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Font;
+import javax.swing.border.TitledBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class GuiWuerfelspiel extends JFrame {
+	
+	private Spielkonto objSpielkonto; 
+	private Wuerfel objWuerfel1; 
+	private Wuerfel objWuerfel2; 
+	private Wuerfel objWuerfel3; 
+	private Spielbrett objSpielbrett; 
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField tfWuerfel1;
+	private JTextField tfWuerfel2;
+	private JTextField tfWuerfel3;
+	private JTextField tfKontostand;
+	private JComboBox comboBox;
+	private win = true; 
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GuiWuerfelspiel frame = new GuiWuerfelspiel();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public GuiWuerfelspiel() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 671, 463);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnNewMenu = new JMenu("Datei");
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem mntmAbheben = new JMenuItem("Abheben");
+		mntmAbheben.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				auszahlen(); 
+			}
+		});
+		mnNewMenu.add(mntmAbheben);
+		
+		JMenuItem mntmEinzahlen = new JMenuItem("Einzahlen ");
+		mntmEinzahlen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				einzahlen(); 
+			}
+		});
+		mnNewMenu.add(mntmEinzahlen);
+		
+		JMenu mnNewMenu_1 = new JMenu("Spielen ");
+		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmSpielen = new JMenuItem("Ready to Gamble? ");
+		mntmSpielen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				spielen(); 
+				
+			}
+		});
+		mnNewMenu_1.add(mntmSpielen);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		comboBox = new JComboBox();
+		comboBox.setFont(new Font("Wide Latin", Font.PLAIN, 29));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6"}));
+		comboBox.setBounds(398, 64, 108, 152);
+		contentPane.add(comboBox);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(null, "W\u00FCrfel", TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		panel.setBounds(39, 55, 275, 311);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblWuerfel1 = new JLabel("Würfel 1: ");
+		lblWuerfel1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblWuerfel1.setBounds(10, 47, 81, 32);
+		panel.add(lblWuerfel1);
+		
+		JLabel lblWuerfel2 = new JLabel("Würfel 1: ");
+		lblWuerfel2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblWuerfel2.setBounds(10, 134, 81, 32);
+		panel.add(lblWuerfel2);
+		
+		JLabel lblWuerfel3 = new JLabel("Würfel 1: ");
+		lblWuerfel3.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblWuerfel3.setBounds(10, 229, 81, 32);
+		panel.add(lblWuerfel3);
+		
+		tfWuerfel1 = new JTextField();
+		tfWuerfel1.setEditable(false);
+		tfWuerfel1.setBounds(118, 54, 86, 20);
+		panel.add(tfWuerfel1);
+		tfWuerfel1.setColumns(10);
+		
+		tfWuerfel2 = new JTextField();
+		tfWuerfel2.setEditable(false);
+		tfWuerfel2.setColumns(10);
+		tfWuerfel2.setBounds(118, 141, 86, 20);
+		panel.add(tfWuerfel2);
+		
+		tfWuerfel3 = new JTextField();
+		tfWuerfel3.setEditable(false);
+		tfWuerfel3.setColumns(10);
+		tfWuerfel3.setBounds(118, 236, 86, 20);
+		panel.add(tfWuerfel3);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(null, "Kontostand", TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		panel_1.setBounds(351, 243, 188, 125);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		
+		tfKontostand = new JTextField();
+		tfKontostand.setEditable(false);
+		tfKontostand.setBounds(38, 21, 107, 93);
+		panel_1.add(tfKontostand);
+		tfKontostand.setColumns(10);		
+		objSpielkonto = new Spielkonto(); 
+		objWuerfel1 = new Wuerfel(); 
+		objWuerfel2 = new Wuerfel(); 
+		objWuerfel3 = new Wuerfel(); 
+		objSpielbrett = new Spielbrett(); 
+	
+		spielbeginn(); 
+		
+	}
+	
+	public void spielbeginn() {
+		int ageVerification = JOptionPane.showConfirmDialog(contentPane, "Sind Sie über 18 und nicht Knossi?");
+		System.out.println(ageVerification);
+		if(ageVerification != 0) {
+			System.exit(0);
+		}
+	}
+	
+	public void einzahlen() {
+		
+		int einzahlen = Integer.parseInt(JOptionPane.showInputDialog("Wie viel möchten Sie einzahlen?")); 
+		objSpielkonto.einzahlen(einzahlen);
+		tfKontostand.setText(Integer.toString(objSpielkonto.getKontostand()));
+		
+		
+	}
+	
+	public void auszahlen() {
+		
+		int auszahlen = Integer.parseInt(JOptionPane.showInputDialog("Wie viel möchten Sie abheben?"));
+		if(auszahlen <= objSpielkonto.getKontostand()) {
+		objSpielkonto.abheben(auszahlen);
+		tfKontostand.setText(Integer.toString(objSpielkonto.getKontostand()));
+		}
+		else {
+			JOptionPane.showMessageDialog(contentPane, "Sie können nicht mehr abheben als Sie Guthaben haben!");
+		}
+	}	
+	
+	
+	public void spielen() {
+		if(objSpielkonto.getKontostand() > 0) {
+		int wuerfel1 = objWuerfel1.getAugen(); 
+		tfWuerfel1.setText(Integer.toString(wuerfel1));
+		int wuerfel2 = objWuerfel2.getAugen(); 
+		tfWuerfel2.setText(Integer.toString(wuerfel2));
+		int wuerfel3 = objWuerfel3.getAugen(); 
+		tfWuerfel3.setText(Integer.toString(wuerfel3));
+		
+		objSpielkonto.setGewinn(-1); 
+	
+		if((comboBox.getSelectedIndex() + 1) == wuerfel1) {
+			objSpielkonto.setGewinn(1); 
+		}
+		
+		if((comboBox.getSelectedIndex() + 1) == wuerfel2) {
+			objSpielkonto.setGewinn(1); 
+		}
+		if((comboBox.getSelectedIndex() + 1) == wuerfel3) {
+			objSpielkonto.setGewinn(1); 
+			
+		}
+		
+		if
+		tfKontostand.setText(Integer.toString(objSpielkonto.getKontostand()));
+			
+		}
+		else {
+			JOptionPane.showMessageDialog(contentPane, "Sie haben kein Guthaben mehr!");
+		}
+		}
+	
+			}
+

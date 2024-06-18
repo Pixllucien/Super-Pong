@@ -1,0 +1,29 @@
+package TEST;
+
+
+
+
+public class TEST {
+
+	private FachklasseTest objF; 
+
+public static void main(String[] args) {
+	// TODO Auto-generated method stub 
+	
+	setObjF(new FachklasseTest());
+	
+	
+
+	getObjF().setX("Du HUHRENSOHN");  
+	System.out.println(getObjF().getX()); 
+	
+}
+
+public FachklasseTest getObjF() {
+	return objF;
+}
+
+public void setObjF(FachklasseTest objF) {
+	this.objF = objF;
+}
+}

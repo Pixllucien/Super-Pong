@@ -1,0 +1,16 @@
+package TEST;
+
+public class FachklasseTest {
+private String x =""; 
+
+
+public FachklasseTest()
+
+public void setX(String pX) {
+	x = pX; 
+}
+
+public String getX() {
+	return x; 
+}
+}
