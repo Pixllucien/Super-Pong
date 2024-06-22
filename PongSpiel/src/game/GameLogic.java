@@ -33,18 +33,14 @@ public class GameLogic {
 	private int ballPositionYAlt;
 	private int ballPositionYNeu;
 
+	private int geschwindigkeit;
+
+
+
 	public GameLogic() {
 
 		gameTimer = new Timer();
 		spielObjekte = new ArrayList<GameObject>();
-
-		/*
-		beispielObjekt1 = new BeweglichesRechteck(50, 100, 20, 20);
-		spielObjekte.add(beispielObjekt1);
-		beispielObjekt1.richtung = 0; // Startrichtung
-		beispielObjekt2 = new BeweglichesRechteck(300, 400, 20, 20);
-		spielObjekte.add(beispielObjekt2);
-		 */
 
 		//Ball erstellen und Startrichtung (Random) geben
 		//0 = rechts
@@ -69,25 +65,33 @@ public class GameLogic {
 			}
 		}, 0, 5);
 
-		//beweglichesRechteck = new BeweglichesRechteck(); 
+
+
+		//Schwierigkeit abfragen und Geschwindigkeit für KI-Feature anpassen
+		geschwindigkeit = schwierigkeit+1;
 
 		//KI Feature
+		//0 Einfach
+		//1 Mittel
+		//2 Schwer
 		gameTimer.scheduleAtFixedRate(new TimerTask(){
 			@Override
 			public void run() {
-
 				if(multiplayer == false) {
 					ballPositionYAlt = ballPositionYNeu;
 					ballPositionYNeu = ball.positionY;
 					if(ballPositionYAlt > ballPositionYNeu) {
-						stange2.positionY -= 1;
+						stange2.positionY -= geschwindigkeit;
 					} else if(ballPositionYAlt < ballPositionYNeu) {
-						stange2.positionY += 1;
+						stange2.positionY += geschwindigkeit;
 					}
 				}
 			}
 		}, 0, 5);
+		System.out.println("Geschwindigkeit = " + geschwindigkeit);
 	}
+
+
 
 
 
@@ -96,43 +100,19 @@ public class GameLogic {
 
 	public void bewegung() {
 		// Laufende Ausführungen im Spiel:
-		//beispielObjekt1.automatischeKreisbewegung();
-
-		/*
-		if (keyLeftarrowpressed) {
-			beispielObjekt2.positionX -= 1;
-		} else if (keyRightarrowpressed) {
-			beispielObjekt2.positionX += 1;
-		}
-		else if (keyUparrowpressed) { 
-			beispielObjekt2.positionY -= 1; 
-		}
-		else if (keyDownarrowpressed) {
-			beispielObjekt2.positionY += 1; 
-		}
-		 */
 
 		if (ballrichtung == 0 && ball.positionX > 0) {
-			ball.positionX -= 1;
+			ball.positionX -= geschwindigkeit;
 		} else if (ballrichtung == 1 && ball.positionX < (screenwidth-20)) {
-			ball.positionX += 1;
+			ball.positionX += geschwindigkeit;
 		}
 		else if (ballrichtung == 2 && ball.positionY > 0) { 
-			ball.positionY -= 1; 
+			ball.positionY -= geschwindigkeit; 
 		}
 		else if (ballrichtung == 3 && ball.positionY < (screenheight-50)) {
-			ball.positionY += 1; 
+			ball.positionY += geschwindigkeit; 
 		}
 	}
-
-	/*public void colision() {
-
-		if(beispielObjekt1.positionX == beispielObjekt2.positionX) {
-			//keyHandler.invert = (-1); 
-
-		}
-	}
-	 */
 
 
 	public void setMultiplayer(boolean pMultiplayer) {
@@ -141,5 +121,10 @@ public class GameLogic {
 
 	public boolean getMultiplayer() {
 		return multiplayer;
+	}
+	
+	
+	public int getSchwierigkeit() {
+		return schwierigkeit;
 	}
 }
