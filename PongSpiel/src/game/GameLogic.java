@@ -26,6 +26,9 @@ public class GameLogic {
 	public boolean keyDownarrowpressed = false;
 	private BeweglichesRechteck beispielObjekt1;
 	private BeweglichesRechteck beispielObjekt2; 
+	private BeweglichesRechteck stange2; 
+	public boolean keySpressed = false;
+	public boolean keyWpressed = false;
 
 	public GameLogic() {
 
@@ -39,8 +42,11 @@ public class GameLogic {
 		beispielObjekt2 = new BeweglichesRechteck(300, 400, 20, 20);
 		spielObjekte.add(beispielObjekt2);
 
-		stange1 = new BeweglichesRechteck(10,240,20,120);
+		stange1 = new BeweglichesRechteck(770,240,20,120);
 		spielObjekte.add(stange1);
+		
+		stange2 = new BeweglichesRechteck(30,240,20,120);
+		spielObjekte.add(stange2);
 
 
 
@@ -61,10 +67,16 @@ public class GameLogic {
 		beispielObjekt1.automatischeKreisbewegung();
 
 		if (keyUparrowpressed) { 
-			stange1.positionY -= 1; 
+			stange2.positionY -= 1; 
 		}
 		else if (keyDownarrowpressed) {
-			stange1.positionY += 1; 
+			stange2.positionY += 1; 
+
+		}if (keySpressed) { 
+			stange2.positionY -= 1; 
+		}
+		else if (keyWpressed) {
+			stange2.positionY += 1; 
 
 		}
 	}
