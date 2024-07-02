@@ -27,6 +27,12 @@ public class KeyHandler implements KeyListener {
 		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			gamelogic.keyRightarrowpressed = true;
 		}
+		else if(e.getKeyCode() == KeyEvent.VK_UP) {
+			gamelogic.keyUparrowpressed = true; 
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+			gamelogic.keyDownarrowpressed = true; 
+		}
 	}
 
 	@Override
@@ -37,7 +43,12 @@ public class KeyHandler implements KeyListener {
 		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			gamelogic.keyRightarrowpressed = false;
 		}
-		
+		else if(e.getKeyCode() == KeyEvent.VK_UP) {
+			gamelogic.keyUparrowpressed = false; 
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+			gamelogic.keyDownarrowpressed = false; 
+		}
 	}
 
 }

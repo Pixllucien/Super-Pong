@@ -15,8 +15,13 @@ public class GameLogic {
 	
 	public boolean keyLeftarrowpressed;
 	public boolean keyRightarrowpressed;
+	public boolean keyUparrowpressed; 
+	public boolean keyDownarrowpressed; 
+	
+	private Collision objCollision;
 	
 	public GameLogic() {
+		objCollision = new Collision(); 
 		gameTimer = new Timer();
 		spielObjekte = new ArrayList<GameObject>();
 		
@@ -41,6 +46,18 @@ public class GameLogic {
 				} else if (keyRightarrowpressed) {
 					beispielObjekt2.positionX += 1;
 				}
+				else if(keyUparrowpressed) {
+					beispielObjekt2.positionY -= 1; 
+				}
+				else if(keyDownarrowpressed) {
+					beispielObjekt2.positionY +=1; 
+				}
+				
+				objCollision.collision(beispielObjekt1, beispielObjekt2);
+				objCollision.collisionHorizontal(beispielObjekt2, screenheight); 
+				
+	
+			
 			}
 		}, 0, 5);
 	}

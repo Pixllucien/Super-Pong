@@ -15,22 +15,18 @@ public class BeweglichesRechteck extends GameObject {
 	
 	public void automatischeKreisbewegung() {
 		if(richtung == 0) {
-			positionX += 1;
-		} else if (richtung == 1) {
-			positionY += 1;
-		} else if (richtung == 2) {
-			positionX -= 1;
-		} else if (richtung == 3) {
-			positionY -= 1;
+			positionX++; 
 		}
-		if (schritteInGleicherRichtung > 75) {
-			richtung += 1;
-			if (richtung > 3) {
-				richtung = 0;
+		else if(richtung == 1) {
+			positionX--; 
+		}
+		if(schritteInGleicherRichtung == 200) {
+			richtung++; 
+			if(richtung == 2) {
+				richtung = 0; 
 			}
-			schritteInGleicherRichtung = 0;
-		} else {
-			schritteInGleicherRichtung += 1;
+			schritteInGleicherRichtung = 0; 
 		}
+		schritteInGleicherRichtung++; 
 	}
 }
