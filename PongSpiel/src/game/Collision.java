@@ -34,10 +34,5 @@ public class Collision {
 			}
 	}
 	
-	public void collisionHorizontal(BeweglichesRechteck obj1, int screenheight){
-		if(obj1.positionY  >= screenheight) {
-			System.out.println("KOLLISION!!!!!!!!"); 
-			
-		}
-	}
+
 }
