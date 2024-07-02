@@ -32,7 +32,6 @@ public class Collision {
 			else {
 				collisionY = false; 
 			}
-				
 	}
 	
 	public void collisionHorizontal(BeweglichesRechteck obj1, int screenheight){
