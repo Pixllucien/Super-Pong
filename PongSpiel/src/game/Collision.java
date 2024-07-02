@@ -18,7 +18,7 @@ public class Collision {
 		}
 	}
 	public void collisionX(BeweglichesRechteck obj1, BeweglichesRechteck obj2) {
-		if(((obj2.positionX - 50) < obj1.positionX) && ((obj2.positionX + 50) > obj1.positionX)) {
+		if(((obj2.positionX - 10) < obj1.positionX) && ((obj2.positionX + 10) > obj1.positionX)) {
 			collisionX = true; 
 		}
 		else {
@@ -26,7 +26,7 @@ public class Collision {
 		}
 	}
 	public void collisionY(BeweglichesRechteck obj1, BeweglichesRechteck obj2) {
-			if((obj2.positionY - 50) < obj1.positionY && (obj2.positionY + 50) > obj1.positionY) {
+			if((obj2.positionY - 10) < obj1.positionY && (obj2.positionY + 10) > obj1.positionY) {
 				collisionY = true; 
 			}
 			else {
