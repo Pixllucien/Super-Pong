@@ -54,7 +54,7 @@ public class GameLogic {
 				}
 				
 				objCollision.collision(beispielObjekt1, beispielObjekt2);
-				objCollision.collisionHorizontal(beispielObjekt2, screenheight); 
+				objCollision.collisionScreen(beispielObjekt2, screenheight); 
 				
 	
 			
