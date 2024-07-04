@@ -1,16 +1,20 @@
 package game;
 
 import gameObjects.BeweglichesRechteck;
+import game.RandomBewegung;
 import game.GameLogic;
 
 public class Collision {
+	RandomBewegung rndBewegung = new RandomBewegung(); 
 	private boolean collisionY = false;
 	private boolean collisionX = false;
 
 	public void collision(BeweglichesRechteck obj1, BeweglichesRechteck obj2) {
 		collisionX(obj1, obj2);
 		collisionY(obj1, obj2);
-		System.out.println("KOLLISION!!!!");
+		if(collisionY == true && collisionX == true) {
+			rndBewegung.collision = true;
+			}
 	}
 
 	public void collisionX(BeweglichesRechteck obj1, BeweglichesRechteck obj2) {
@@ -30,7 +34,9 @@ public class Collision {
 	}
 
 	public void collisionScreen(BeweglichesRechteck obj, int screenheight) {
-		if (obj.positionY + 2 >= screenheight) {
+		System.out.println(screenheight);
+		System.out.println(obj.positionY+20);
+		if (obj.positionY + 20 >= screenheight - 40) {
 			System.out.println("KOLLISION!!!!!!!!");
 		}
 		if (obj.positionY <= 0) {
