@@ -32,20 +32,21 @@ public class GameLogic {
 		keyRightarrowpressed = false;
 		
 		// Objekte im Spiel:
-		BeweglichesRechteck beispielObjekt1 = new BeweglichesRechteck(0, 0, 20, 20);
+		
+		BeweglichesRechteck beispielObjekt1 = new BeweglichesRechteck(50, 50, 20, 20);
 		spielObjekte.add(beispielObjekt1);
 		beispielObjekt1.richtung = 0; // Startrichtung
 		BeweglichesRechteck beispielObjekt2 = new BeweglichesRechteck(300, 400, 20, 20);
 		spielObjekte.add(beispielObjekt2);
-		
 		gameTimer.scheduleAtFixedRate(new TimerTask(){
 			@Override
 			public void run() {
-				RandomBewegung randomBewegung = new RandomBewegung();
-				// Laufende Ausführungen im Spiel:
+			
+				
 				randomBewegung.randomBewegung(beispielObjekt1, run); 
 				
 				run = true; 
+				
 				if (keyLeftarrowpressed) {
 					beispielObjekt2.positionX -= 1;
 				} else if (keyRightarrowpressed) {
@@ -59,12 +60,13 @@ public class GameLogic {
 				}
 				
 				objCollision.collision(beispielObjekt1, beispielObjekt2);
-				objCollision.collisionScreen(beispielObjekt2, screenheight); 
+				objCollision.collisionScreen(beispielObjekt2, screenheight);
+				objCollision.collisionScreen(beispielObjekt1, screenheight);
 				
 	
 			
 			}
-		}, 0, 5);
+		}, 0, 50);  // war mal 5 
 	}
 	
 }

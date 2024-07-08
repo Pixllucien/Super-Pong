@@ -34,13 +34,16 @@ public class Collision {
 	}
 
 	public void collisionScreen(BeweglichesRechteck obj, int screenheight) {
-		System.out.println(screenheight);
-		System.out.println(obj.positionY+20);
 		if (obj.positionY + 20 >= screenheight - 40) {
-			System.out.println("KOLLISION!!!!!!!!");
+			System.out.println(rndBewegung.collision); 
+			rndBewegung.collision = true; 
+			System.out.println("        "  + rndBewegung.collision); 
 		}
 		if (obj.positionY <= 0) {
-			System.out.println("Kollision!!!!!!");
+			System.out.println(rndBewegung.collision); 
+			rndBewegung.collision = true; 
+			System.out.println("        "  + rndBewegung.collision); 
+
 		}
 	}
 
