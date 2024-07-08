@@ -50,7 +50,7 @@ public class GameLogic {
 				if (keyLeftarrowpressed) {
 					beispielObjekt2.positionX -= 1;
 				} else if (keyRightarrowpressed) {
-					beispielObjekt2.positionX += 1;
+					beispielObjekt2.positionX += 1; //
 				}
 				else if(keyUparrowpressed) {
 					beispielObjekt2.positionY -= 1; 
