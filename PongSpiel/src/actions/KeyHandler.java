@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import game.GameLogic;
+import gameObjects.BeweglichesRechteck;
 
 public class KeyHandler implements KeyListener {
 
@@ -33,7 +34,20 @@ public class KeyHandler implements KeyListener {
 		else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
 			gamelogic.keyDownarrowpressed = true; 
 		}
+		if(e.getKeyCode() == KeyEvent.VK_W) {
+			gamelogic.keyWpressed = true; 
+		}
+		if(e.getKeyCode() == KeyEvent.VK_A) {
+			gamelogic.keyApressed = true; 
+		}
+		if(e.getKeyCode() == KeyEvent.VK_S) {
+			gamelogic.keySpressed = true; 
+		}
+		if(e.getKeyCode() == KeyEvent.VK_D) {
+			gamelogic.keyDpressed = true; 
+		}
 	}
+
 
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -49,6 +63,33 @@ public class KeyHandler implements KeyListener {
 		else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
 			gamelogic.keyDownarrowpressed = false; 
 		}
+		else if(e.getKeyCode() == KeyEvent.VK_W) {
+			gamelogic.keyWpressed = false; 
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_A) {
+			gamelogic.keyApressed = false; 
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_S) {
+			gamelogic.keySpressed = false; 
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_D) {
+			gamelogic.keyDpressed = false; 
+		}
 	}
+	
+	
+	public boolean collisionScreen(BeweglichesRechteck obj, int screenheight) {
+		if (obj.positionY + 20 >= screenheight - 40) {
+			return true; 
+		}
+		else if (obj.positionY <= 0) {
+		return true; 	
+
+		}
+		else {
+			return false; 
+		}
+	}
+
 
 }

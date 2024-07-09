@@ -15,6 +15,9 @@ public class Gui {
 		
 		screenwidth = 800;
 		screenheight = 600;
+	
+
+		
 		spiellogik.screenwidth = screenwidth;
 		spiellogik.screenheight = screenheight;
 		
@@ -34,6 +37,8 @@ public class Gui {
 		frame.add(lbldraw);
 		
 		frame.setVisible(true);
+		spiellogik.screen = frame.getHeight() / 2; 
 	}
+	
 
 }
