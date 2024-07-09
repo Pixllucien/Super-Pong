@@ -7,6 +7,8 @@ import java.util.TimerTask;
 
 import actions.KeyHandler;
 import gameObjects.BeweglichesRechteck;
+import gui.GUIZwischenMenue;
+import gui.Gui;
 
 public class GameLogic {
 
@@ -16,16 +18,13 @@ public class GameLogic {
 	public ArrayList<GameObject> spielObjekte;
 	public int schwierigkeit = 0;
 
-
-	//private BeweglichesRechteck beweglichesRechteck; 
 	private byte ballrichtung;
 
 	public boolean keyLeftarrowpressed = false;
 	public boolean keyRightarrowpressed = false;;
 	public boolean keyUparrowpressed = false; 
 	public boolean keyDownarrowpressed = false;
-	//private BeweglichesRechteck beispielObjekt1;
-	//private BeweglichesRechteck beispielObjekt2; 
+	public boolean keyEscapePressed = false;
 
 	public boolean multiplayer = true;
 	private BeweglichesRechteck ball;
@@ -34,11 +33,18 @@ public class GameLogic {
 	private int ballPositionYNeu;
 
 	private int geschwindigkeit;
+	
+	private Gui objGui;
+	
+
+	//Punktestand
+	private int punktePlayer1 = 0;
+	private int punktePlayer2 = 0;
 
 
 
 	public GameLogic() {
-
+		
 		gameTimer = new Timer();
 		spielObjekte = new ArrayList<GameObject>();
 
@@ -62,6 +68,9 @@ public class GameLogic {
 			@Override
 			public void run() {
 				bewegung(); 
+				if(keyEscapePressed == true) {
+					objGui.closeWindow();
+				}
 			}
 		}, 0, 5);
 
@@ -122,9 +131,24 @@ public class GameLogic {
 	public boolean getMultiplayer() {
 		return multiplayer;
 	}
-	
-	
+
+
 	public int getSchwierigkeit() {
 		return schwierigkeit;
 	}
+
+	public int getPunktePlayer1() {
+		return punktePlayer1;
+	}
+
+	public int getPunktePlayer2() {
+		return punktePlayer2;
+	}
+
+
 }
+
+
+
+
+
