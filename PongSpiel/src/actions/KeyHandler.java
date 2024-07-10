@@ -75,21 +75,5 @@ public class KeyHandler implements KeyListener {
 		else if(e.getKeyCode() == KeyEvent.VK_D) {
 			gamelogic.keyDpressed = false; 
 		}
-	}
-	
-	
-	public boolean collisionScreen(BeweglichesRechteck obj, int screenheight) {
-		if (obj.positionY + 20 >= screenheight - 40) {
-			return true; 
-		}
-		else if (obj.positionY <= 0) {
-		return true; 	
-
-		}
-		else {
-			return false; 
-		}
-	}
-
 
 }
