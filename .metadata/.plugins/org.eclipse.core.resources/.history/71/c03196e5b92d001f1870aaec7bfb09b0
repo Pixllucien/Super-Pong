@@ -1,0 +1,15 @@
+package TEST;
+
+public class FachklasseTest {
+private String x =""; 
+
+public static void main(String[] args) {
+	// TODO Auto-generated method stub 
+	
+
+}
+public setX(pX) {
+	x = pX; 
+	
+}
+}

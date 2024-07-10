@@ -1,0 +1,18 @@
+package TEST;
+
+public class TEST {
+
+  
+public static void main(String[] args) {
+	// TODO Auto-generated method stub 
+	boolean x = true; 
+	 FachklasseTest objF = new FachklasseTest(x);
+	
+
+	objF.setX("DU HUHRENSOHN");  
+	System.out.println(objF.getX()); 
+	
+	
+	 
+}
+}
