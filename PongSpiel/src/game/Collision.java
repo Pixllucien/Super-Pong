@@ -26,7 +26,7 @@ public class Collision {
 	}
 
 	public boolean collisionY(BeweglichesRechteck obj1, BeweglichesRechteck obj2) {
-		if (obj2.positionY - 80 < obj1.positionY && obj2.positionY > obj1.positionY - 80) {
+		if (obj2.positionY < obj1.positionY + 20  && obj2.positionY + 80 > obj1.positionY ) {
 			return true;
 		} else {
 			return false;

@@ -29,7 +29,13 @@ public class GameLogic {
 	private int punkteSp1 = 0;
 	private int punkteSp2 = 0;
 	private int wait = 0;
-
+	private int ballAlt;
+	private int ballNeu;
+	public boolean multiplayer = false;
+	public int schwierigkeit = 0;
+	private int geschwindigkeit = 1;
+	
+	
 	private int add = 0;
 	Random rnd = new Random();
 
@@ -58,11 +64,17 @@ public class GameLogic {
 		gameTimer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
+				
+				System.out.println(multiplayer);
 
+				geschwindigkeit = schwierigkeit+1;
+				
+				if(multiplayer == true) {
 				if (keyUparrowpressed) {
 					spieler2.positionY -= 1;
 				} else if (keyDownarrowpressed) {
 					spieler2.positionY += 1;
+				}
 				}
 
 				if (keyWpressed) {
@@ -76,8 +88,13 @@ public class GameLogic {
 					runX = true;
 					randomBewegung.randomBewegungY(ball, runY, screenheight, spieler1, spieler2);
 					runY = true;
-				}
+
+						 
+			 	}
 				
+				if(multiplayer == false) {
+				multiplayer(ball, spieler2);
+				}
 				setPunkteSp2(objCollision.collisonLeft(ball, 0));
 				setPunkteSp1(objCollision.collisionRight(ball, 760));
 				System.out.println("Spielstand: " + getPunkteSp1() + "   " + getPunkteSp2());
@@ -114,4 +131,33 @@ public class GameLogic {
 		this.punkteSp1 += punkteSp1;
 	}
 
+	public void multiplayer(BeweglichesRechteck ball, BeweglichesRechteck spieler2) {
+	
+			if(spieler2.positionY > ball.positionY) {
+				spieler2.positionY -= geschwindigkeit; 
+				System.out.println("bin da");
+			}
+			
+			else if(spieler2.positionY < ball.positionY) {
+				spieler2.positionY += geschwindigkeit; 
+			}
+		
+	
+		}
+		
+	public void setMultiplayer(boolean pMultiplayer) {
+		multiplayer = pMultiplayer;
+	}
+
+	public boolean getMultiplayer() {
+		return multiplayer;
+	}
+	
+	
+	public int getSchwierigkeit() {
+		return schwierigkeit;
+	}
 }
+		
+
+

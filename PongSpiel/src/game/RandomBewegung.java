@@ -32,12 +32,6 @@ public class RandomBewegung {
 		}
 		}
 		public void randomBewegungY(BeweglichesRechteck obj, boolean run, int screenheight, BeweglichesRechteck spieler1, BeweglichesRechteck spieler2) {
-			if((col.collisionX(obj, spieler1) == true) && (col.collisionY(obj, spieler1) == true)) {
-			
-			}
-			if((col.collisionX(obj, spieler2) == true) && (col.collisionY(obj, spieler2) == true)) {
-			
-			}
 			if (col.collisionScreen(obj, screenheight)) {
 				addY = -addY;
 			}
